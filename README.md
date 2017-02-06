@@ -53,7 +53,24 @@ serverArgs.protocolFactory(new TTraceStringProtocol.Factory(new TBinaryProtocol.
 		e.printStackTrace();
 	}
 ```
-具体见test目录下面的wuyun.cnl.service.string实现
+
+实现类获取跟踪信息：
+```
+@Override
+	public String HelloWorld(String name) throws TException {
+        System.out.println("ServiceA traceID:="+ThreadTrace.get()+",args："+name);
+        //call();		
+		new Thread(new Runnable(){
+			@Override
+			public void run() {
+				call();
+			}
+			
+		}).start();
+		return "hello,world:"+name;
+	}
+```
+其他具体见test目录下面的wuyun.cnl.service.string实现
 
 
 ##TTraceStructProtocol调用方式
@@ -99,6 +116,6 @@ TProtocol protocol= new TTraceStructProtocol(new TCompactProtocol(transport),new
 		}
 ```
 
-具体见test目录下面的wuyun.cnl.service.struct实现
+其他具体见test目录下面的wuyun.cnl.service.struct实现
 
 

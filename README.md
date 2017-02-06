@@ -8,6 +8,12 @@ TTraceStringProtocol：跟踪协议内容为字符串。
 
 TTraceStructProtocol：跟踪协议内容为结构体，thrift定义的结构体，扩展性更强，支持添加跟多的跟踪属性。
 
+此两种方式都是扩展原有的协议方式，对现有的协议封装而实现
+
+TTraceStringProtocol是在写消息头的时候，修改方法名实现追加跟踪内容，添加跟踪协议
+
+TTraceStructProtocol是在写消息结束的时候，再写一个跟踪结构体，利用thrift本身生成的结构体读写方法，读写跟踪内容
+
 ##TTraceStringProtocol调用方式
 
 客户端代码处理，使用跟踪调用链协议包装原有协议

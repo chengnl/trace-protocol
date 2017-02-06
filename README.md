@@ -3,7 +3,9 @@
 
 ##协议说明
 两种方式实现了跟踪调用链协议
+
 TTraceStringProtocol：跟踪协议内容为字符串。
+
 TTraceStructProtocol：跟踪协议内容为结构体，thrift定义的结构体，扩展性更强，支持添加跟多的跟踪属性。
 
 ##TTraceStringProtocol调用方式
